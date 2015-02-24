@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Mongoose Dashboard</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type ="text/javascript" src="/socket.io/socket.io.js"></script> -->
+	<style>
+		label {width: 500px;
+			   display: block;
+			   margin: 5px;}
+		button {width: 100px;
+				height:30px;
+				display: inline-block;}
+
+	</style>
+</head>
+<body>
+	<div = 'container'>
+		<h1>Flock of Mongooses</h1>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<th>Name</th>
+					<th>Color</th>
+					<th>Weight</th>
+					<th>Action</th>
+				</tr>
+			</tbody>
+			<tbody>
+				<% for (index in animals) { %>
+					<tr>
+						<td><a href='/mongooses/<%= animals[index]._id %>/edit'><%= animals[index].name %></a></td>
+						<td><%= animals[index].color %></td>
+						<td><%= animals[index].weight %></td>
+						<td><button type="button" class="btn btn-warning btn-xs" ><a href='/mongooses/<%= animals[index]._id %>/destroy'> Delete<a></button></td>
+					</tr>
+				<% } %>
+			</tbody>
+		</table>
+		<button type="button" class="btn btn-success"><a href='/mongooses/new'> Add</a></button>
+	</div>
+</body>		
+</html>
